@@ -9,4 +9,8 @@ def encode(val):
 
 
 def decode(val):
-    return hashids.decode(val)[0]
+    try:
+        decoded = hashids.decode(val)
+    except TypeError:
+        return None
+    return decoded[0] if decoded else None
